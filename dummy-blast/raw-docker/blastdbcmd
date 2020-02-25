@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run \
+ --rm -i \
+ -v /data/work:/data/work -w $(pwd) \
+ -u $(id -u):$(id -g) \
+ biocontainers/blast:v2.2.31_cv2 blastdbcmd "$@"
