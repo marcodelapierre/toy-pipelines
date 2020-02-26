@@ -29,6 +29,8 @@ for w in $worker_list ; do
   scp -r pdb $w:$inp/ >/dev/null
 done
 
+# ssh $worker1 "sshfs $worker2:$inp $out"  ## not working as expected yet
+
 
 # stage data
 
@@ -64,6 +66,8 @@ echo results retrieved | tee -a $logs/master.log
 
 
 # clean up
+
+# ssh $worker1 "fusermount -u $out"
 
 for w in $worker_list ; do
   ssh $w "rm -rf $inp $out"
